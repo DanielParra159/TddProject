@@ -1,3 +1,5 @@
+using UnityEngine.Assertions;
+
 namespace Battle
 {
     public class Map
@@ -7,11 +9,23 @@ namespace Battle
         public int NumberOfColumns => _cells.GetLength(ColumnsDimension);
         public int NumberOfRows => _cells.GetLength(RowsDimension);
 
-        private readonly int[,] _cells;
-        
+        private readonly Hero[,] _cells;
+
         public Map(int width, int height)
         {
-           _cells = new int[width, height];
+            _cells = new Hero[width, height];
+        }
+
+        public void AddHero(int positionX, int positionY, Hero hero)
+        {
+            Assert.IsTrue(positionX < NumberOfColumns, "PositionX must be smaller than number of columns");
+            Assert.IsTrue(positionY < NumberOfRows, "PositionY must be smaller than number of rows");
+            _cells[positionX, positionY] = hero;
+        }
+
+        public bool ContainsAHero(int positionX, int positionY)
+        {
+            return _cells[positionX, positionY] != null;
         }
     }
 }
