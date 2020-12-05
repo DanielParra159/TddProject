@@ -25,12 +25,18 @@ namespace Battle
             {
                 throw new Exception($"There is a here in {positionX} {positionY}");
             }
+
             _cells[positionX, positionY] = hero;
         }
 
         public bool ContainsAHero(int positionX, int positionY)
         {
             return _cells[positionX, positionY] != null;
+        }
+
+        public void RemoveHero(int positionX, int positionY)
+        {
+            _cells[positionX, positionY] = null;
         }
     }
 }
