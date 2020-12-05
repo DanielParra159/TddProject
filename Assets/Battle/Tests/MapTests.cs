@@ -1,4 +1,5 @@
 ﻿using System;
+using Battle.Tests.Factories;
 using NUnit.Framework;
 
 namespace Battle.Tests
@@ -11,7 +12,11 @@ namespace Battle.Tests
             int width, int height)
         {
             // Act
-            var map = new Map(width, height);
+            var map = MapFactory
+                     .AMap
+                     .WithHeight(height)
+                     .WithWidth(width)
+                     .Build();
 
             // Assert
             Assert.AreEqual(width, map.NumberOfColumns,
@@ -25,7 +30,11 @@ namespace Battle.Tests
         [TestCase(2, 5)]
         public void WhenAddANewHero_StoreItInTheCorrectCell(int heroPositionX, int heroPositionY)
         {
-            var map = new Map(10, 10);
+            var map = MapFactory
+                     .AMap
+                     .WithHeight(10)
+                     .WithWidth(10)
+                     .Build();
             var hero = new Hero();
 
             Assert.IsFalse(map.ContainsAHero(heroPositionX, heroPositionY),
@@ -41,7 +50,9 @@ namespace Battle.Tests
         public void WhenAddANewHeroAndThereIsAlreadyAHeroInTheSameCell_ThenThrowAnException()
         {
             // Arrange
-            var map = new Map(10, 10);
+            var map = MapFactory
+                     .AMap
+                     .Build();
             var hero = new Hero();
             map.AddHero(5, 5, hero);
             var hero2 = new Hero();
@@ -53,6 +64,21 @@ namespace Battle.Tests
                                       // Act
                                       map.AddHero(5, 5, hero2);
                                   }, "The map is not checking if there is already a hero");
+        }
+
+        [Test]
+        public void WhenRemoveAHero_ThenRemoveItFromTheCells()
+        {
+            var map = MapFactory
+                     .AMap
+                     .Build();
+            var hero = new Hero();
+            map.AddHero(2, 3, hero);
+
+            Assert.IsTrue(map.ContainsAHero(2, 3));
+            map.RemoveHero(2, 3);
+
+            Assert.IsFalse(map.ContainsAHero(2, 3));
         }
     }
 }
