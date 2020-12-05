@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Battle.Tests
 {
@@ -34,6 +35,24 @@ namespace Battle.Tests
 
             Assert.IsTrue(map.ContainsAHero(heroPositionX, heroPositionY),
                           $"The map does not contain a Hero in cell {heroPositionX},{heroPositionY}");
+        }
+
+        [Test]
+        public void WhenAddANewHeroAndThereIsAlreadyAHeroInTheSameCell_ThenThrowAnException()
+        {
+            // Arrange
+            var map = new Map(10, 10);
+            var hero = new Hero();
+            map.AddHero(5, 5, hero);
+            var hero2 = new Hero();
+
+            // Asserts
+            Assert
+               .Throws<Exception>(() =>
+                                  {
+                                      // Act
+                                      map.AddHero(5, 5, hero2);
+                                  }, "The map is not checking if there is already a hero");
         }
     }
 }

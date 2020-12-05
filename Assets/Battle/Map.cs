@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.Assertions;
 
 namespace Battle
@@ -20,6 +21,10 @@ namespace Battle
         {
             Assert.IsTrue(positionX < NumberOfColumns, "PositionX must be smaller than number of columns");
             Assert.IsTrue(positionY < NumberOfRows, "PositionY must be smaller than number of rows");
+            if (ContainsAHero(positionX, positionY))
+            {
+                throw new Exception($"There is a here in {positionX} {positionY}");
+            }
             _cells[positionX, positionY] = hero;
         }
 
