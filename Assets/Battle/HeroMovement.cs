@@ -2,7 +2,7 @@ using System;
 
 namespace Battle
 {
-    public class HeroMovement
+    public class HeroMovement : IHeroMovement
     {
         private class Position
         {
