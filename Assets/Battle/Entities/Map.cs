@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.Assertions;
 
-namespace Battle
+namespace Battle.Entities
 {
     public class Map
     {

@@ -1,3 +1,4 @@
+using Battle.Entities;
 using Battle.Tests.Factories;
 using NSubstitute;
 using NUnit.Framework;

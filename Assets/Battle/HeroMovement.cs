@@ -1,4 +1,5 @@
 using System;
+using Battle.Entities;
 
 namespace Battle
 {
