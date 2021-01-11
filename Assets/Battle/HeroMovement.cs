@@ -25,12 +25,13 @@ namespace Battle
             _map = map;
         }
         
-        public void Move(Directions direction)
+        public HeroMovementOutputData Move(Directions direction)
         {
             var finalPosition = GetFinalPosition(_hero, direction);
             _map.RemoveHero(_hero.PositionX, _hero.PositionY);
             _map.AddHero(finalPosition.X, finalPosition.Y, _hero);
             _hero.SetPosition(finalPosition.X, finalPosition.Y);
+            return new HeroMovementOutputData(finalPosition.X, finalPosition.Y);
         }
 
         private Position GetFinalPosition(Hero hero, Directions direction)
