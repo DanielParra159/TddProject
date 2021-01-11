@@ -21,7 +21,7 @@ namespace Battle.Tests
             _hero = new Hero();
             _map = MapFactory.AMap.Build();
 
-            _movementController = new MovementController(_movementMotor, _heroMovement, _hero, _map);
+            _movementController = new MovementController(_movementMotor, _heroMovement, _hero);
         }
 
         [TestCase(1, 0, Directions.Right)]

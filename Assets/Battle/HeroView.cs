@@ -11,7 +11,6 @@ namespace Battle
             movementController =
                 new MovementController(null,
                                        null,
-                                       null,
                                        null);
         }
 
