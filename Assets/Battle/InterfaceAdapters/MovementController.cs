@@ -1,6 +1,8 @@
+using Battle.SharedTypes;
+using Battle.UseCases;
 using UnityEngine;
 
-namespace Battle
+namespace Battle.InterfaceAdapters
 {
     public class MovementController
     {

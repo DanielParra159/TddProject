@@ -1,3 +1,4 @@
+using Battle.Entities;
 using NUnit.Framework;
 
 namespace Battle.Tests

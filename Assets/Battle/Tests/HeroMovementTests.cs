@@ -1,4 +1,7 @@
+using Battle.Entities;
+using Battle.SharedTypes;
 using Battle.Tests.Factories;
+using Battle.UseCases;
 using NUnit.Framework;
 
 namespace Battle.Tests

@@ -1,4 +1,4 @@
-namespace Battle
+namespace Battle.Entities
 {
     public class Hero
     {

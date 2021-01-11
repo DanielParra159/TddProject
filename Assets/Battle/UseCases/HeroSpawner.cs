@@ -1,4 +1,6 @@
-namespace Battle
+using Battle.Entities;
+
+namespace Battle.UseCases
 {
     public class HeroSpawner
     {

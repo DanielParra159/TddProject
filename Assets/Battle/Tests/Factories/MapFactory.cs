@@ -1,3 +1,5 @@
+using Battle.Entities;
+
 namespace Battle.Tests.Factories
 {
     public class MapBuilder

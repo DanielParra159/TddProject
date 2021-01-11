@@ -1,4 +1,4 @@
-namespace Battle
+namespace Battle.UseCases
 {
     public class HeroMovementOutputData
     {
