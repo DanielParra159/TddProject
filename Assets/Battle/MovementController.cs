@@ -30,7 +30,7 @@ namespace Battle
             
             var direction = GetDirection(horizontal, vertical);
 
-            _heroMovement.Move(_hero, _map, direction);
+            _heroMovement.Move(direction);
             _movementMotor.UpdatePosition(new Vector3(_hero.PositionX, _hero.PositionY, 0.0f));
         }
 

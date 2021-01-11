@@ -16,12 +16,21 @@ namespace Battle
             }
         }
 
-        public void Move(Hero hero, Map map, Directions direction)
+        private readonly Hero _hero;
+        private readonly Map _map;
+
+        public HeroMovement(Hero hero, Map map)
         {
-            var finalPosition = GetFinalPosition(hero, direction);
-            map.RemoveHero(hero.PositionX, hero.PositionY);
-            map.AddHero(finalPosition.X, finalPosition.Y, hero);
-            hero.SetPosition(finalPosition.X, finalPosition.Y);
+            _hero = hero;
+            _map = map;
+        }
+        
+        public void Move(Directions direction)
+        {
+            var finalPosition = GetFinalPosition(_hero, direction);
+            _map.RemoveHero(_hero.PositionX, _hero.PositionY);
+            _map.AddHero(finalPosition.X, finalPosition.Y, _hero);
+            _hero.SetPosition(finalPosition.X, finalPosition.Y);
         }
 
         private Position GetFinalPosition(Hero hero, Directions direction)

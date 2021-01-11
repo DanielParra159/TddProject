@@ -38,7 +38,7 @@ namespace Battle.Tests
 
             _heroMovement
                .Received(1)
-               .Move(Arg.Any<Hero>(), Arg.Any<Map>(), expectedDirection);
+               .Move(expectedDirection);
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace Battle.Tests
 
             _heroMovement
                .Received(0)
-               .Move(Arg.Any<Hero>(), Arg.Any<Map>(), Arg.Any<Directions>());
+               .Move( Arg.Any<Directions>());
         }
 
         [Test]
@@ -58,17 +58,7 @@ namespace Battle.Tests
 
             _heroMovement
                .Received(1)
-               .Move(_hero, Arg.Any<Map>(), Arg.Any<Directions>());
-        }
-
-        [Test]
-        public void WhenCallToMove_ThenCallWithTheCorrectMap()
-        {
-            _movementController.Move(1, 0);
-
-            _heroMovement
-               .Received(1)
-               .Move(Arg.Any<Hero>(), _map, Arg.Any<Directions>());
+               .Move( Arg.Any<Directions>());
         }
 
         [Test]
@@ -76,7 +66,7 @@ namespace Battle.Tests
         {
             _heroMovement.
                 When(heroMovement=>heroMovement
-                        .Move(Arg.Any<Hero>(), Arg.Any<Map>(), Arg.Any<Directions>()))
+                        .Move(Arg.Any<Directions>()))
                .Do(callback =>
                    {
                        _hero.SetPosition(1, 0);

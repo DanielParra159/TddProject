@@ -22,8 +22,8 @@ namespace Battle.Tests
             int expectedPositionX, int expectedPositionY)
         {
             var hero = new HeroSpawner().CreateHero(_map, initialPositionX, initialPositionY);
-            var subjectUnderTest = new HeroMovement();
-            subjectUnderTest.Move(hero, _map, direction);
+            var subjectUnderTest = new HeroMovement(hero, _map);
+            subjectUnderTest.Move(direction);
 
             // Assert
             Assert.IsTrue(_map.ContainsAHero(expectedPositionX, expectedPositionY),
@@ -39,8 +39,8 @@ namespace Battle.Tests
             int expectedPositionX, int expectedPositionY)
         {
             var hero = new HeroSpawner().CreateHero(_map, initialPositionX, initialPositionY);
-            var subjectUnderTest = new HeroMovement();
-            subjectUnderTest.Move(hero, _map, direction);
+            var subjectUnderTest = new HeroMovement(hero, _map);
+            subjectUnderTest.Move(direction);
 
             // Assert
             Assert.AreEqual(expectedPositionX, hero.PositionX);
