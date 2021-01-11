@@ -21,7 +21,7 @@ namespace Battle.Tests
             _hero = new Hero();
             _map = MapFactory.AMap.Build();
 
-            _movementController = new MovementController(_movementMotor, _heroMovement, _hero, _map);
+            _movementController = new MovementController(_movementMotor, _heroMovement);
         }
 
         [TestCase(1, 0, Directions.Right)]
@@ -34,11 +34,14 @@ namespace Battle.Tests
             float horizontal, float vertical,
             Directions expectedDirection)
         {
+            _heroMovement
+               .Move(Arg.Any<Directions>())
+               .Returns(new HeroMovementOutputData(0,0));
             _movementController.Move(horizontal, vertical);
 
             _heroMovement
                .Received(1)
-               .Move(Arg.Any<Hero>(), Arg.Any<Map>(), expectedDirection);
+               .Move(expectedDirection);
         }
 
         [Test]
@@ -48,40 +51,16 @@ namespace Battle.Tests
 
             _heroMovement
                .Received(0)
-               .Move(Arg.Any<Hero>(), Arg.Any<Map>(), Arg.Any<Directions>());
-        }
-
-        [Test]
-        public void WhenCallToMove_ThenCallWithTheCorrectHero()
-        {
-            _movementController.Move(1, 0);
-
-            _heroMovement
-               .Received(1)
-               .Move(_hero, Arg.Any<Map>(), Arg.Any<Directions>());
-        }
-
-        [Test]
-        public void WhenCallToMove_ThenCallWithTheCorrectMap()
-        {
-            _movementController.Move(1, 0);
-
-            _heroMovement
-               .Received(1)
-               .Move(Arg.Any<Hero>(), _map, Arg.Any<Directions>());
+               .Move( Arg.Any<Directions>());
         }
 
         [Test]
         public void WhenCallToMove_ThenCallToMovementMotorWithTheFinalPosition()
         {
-            _heroMovement.
-                When(heroMovement=>heroMovement
-                        .Move(Arg.Any<Hero>(), Arg.Any<Map>(), Arg.Any<Directions>()))
-               .Do(callback =>
-                   {
-                       _hero.SetPosition(1, 0);
-                   });
-            
+            _heroMovement
+               .Move(Arg.Any<Directions>())
+               .Returns(new HeroMovementOutputData(1,0));
+
             _movementController.Move(1, 0);
 
             var expectedPosition = new Vector3(1, 0, 0);

@@ -22,8 +22,8 @@ namespace Battle.Tests
             int expectedPositionX, int expectedPositionY)
         {
             var hero = new HeroSpawner().CreateHero(_map, initialPositionX, initialPositionY);
-            var subjectUnderTest = new HeroMovement();
-            subjectUnderTest.Move(hero, _map, direction);
+            var subjectUnderTest = new HeroMovement(hero, _map);
+            subjectUnderTest.Move(direction);
 
             // Assert
             Assert.IsTrue(_map.ContainsAHero(expectedPositionX, expectedPositionY),
@@ -39,12 +39,30 @@ namespace Battle.Tests
             int expectedPositionX, int expectedPositionY)
         {
             var hero = new HeroSpawner().CreateHero(_map, initialPositionX, initialPositionY);
-            var subjectUnderTest = new HeroMovement();
-            subjectUnderTest.Move(hero, _map, direction);
+            var subjectUnderTest = new HeroMovement(hero, _map);
+            subjectUnderTest.Move(direction);
 
             // Assert
             Assert.AreEqual(expectedPositionX, hero.PositionX);
             Assert.AreEqual(expectedPositionY, hero.PositionY);
+        }
+        
+        [TestCase(Directions.Right, 5, 5)]
+        [TestCase(Directions.Left, 2, 3)]
+        [TestCase(Directions.Up, 3, 2)]
+        [TestCase(Directions.Down, 3, 3)]
+        public void WhenMove_ThenReturnTheHeroPosition(
+            Directions direction, int initialPositionX, int initialPositionY)
+        {
+            var hero = new HeroSpawner()
+               .CreateHero(_map, initialPositionX, initialPositionY);
+            var subjectUnderTest = new HeroMovement(hero, _map);
+            
+            var result = subjectUnderTest.Move(direction);
+
+            // Assert
+            Assert.AreEqual(hero.PositionX, result.PositionX);
+            Assert.AreEqual(hero.PositionY, result.PositionY);
         }
     }
 }
