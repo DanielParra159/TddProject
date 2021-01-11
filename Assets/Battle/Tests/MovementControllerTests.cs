@@ -1,4 +1,5 @@
 using Battle.Entities;
+using Battle.InterfaceAdapters;
 using Battle.Tests.Factories;
 using Battle.UseCases;
 using NSubstitute;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Battle
+namespace Battle.InterfaceAdapters
 {
     public interface IMovementMotor
     {

@@ -1,3 +1,4 @@
+using Battle.InterfaceAdapters;
 using UnityEngine;
 
 namespace Battle
