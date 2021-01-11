@@ -1,5 +1,6 @@
 using Battle.Entities;
 using Battle.Tests.Factories;
+using Battle.UseCases;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;

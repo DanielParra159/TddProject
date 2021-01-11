@@ -1,7 +1,7 @@
 using System;
 using Battle.Entities;
 
-namespace Battle
+namespace Battle.UseCases
 {
     public class HeroMovement : IHeroMovement
     {

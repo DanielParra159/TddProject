@@ -1,3 +1,5 @@
+using Battle.UseCases;
+
 namespace Battle
 {
     public interface IHeroMovement
