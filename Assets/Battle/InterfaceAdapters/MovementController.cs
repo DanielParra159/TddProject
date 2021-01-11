@@ -1,3 +1,5 @@
+using Battle.SharedTypes;
+using Battle.UseCases;
 using UnityEngine;
 
 namespace Battle.InterfaceAdapters

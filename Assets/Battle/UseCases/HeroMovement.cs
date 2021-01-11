@@ -1,5 +1,6 @@
 using System;
 using Battle.Entities;
+using Battle.SharedTypes;
 
 namespace Battle.UseCases
 {

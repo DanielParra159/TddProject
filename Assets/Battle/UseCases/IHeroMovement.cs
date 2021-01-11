@@ -1,6 +1,6 @@
-using Battle.UseCases;
+using Battle.SharedTypes;
 
-namespace Battle
+namespace Battle.UseCases
 {
     public interface IHeroMovement
     {

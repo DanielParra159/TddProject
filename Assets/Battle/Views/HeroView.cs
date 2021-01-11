@@ -1,7 +1,7 @@
 using Battle.InterfaceAdapters;
 using UnityEngine;
 
-namespace Battle
+namespace Battle.Views
 {
     public class HeroView : MonoBehaviour, IMovementMotor
     {
