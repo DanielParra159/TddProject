@@ -24,7 +24,7 @@ namespace Battle.Views
 
         public void UpdatePosition(Vector3 finalPosition)
         {
-            //transform.position = finalPosition;
+            transform.position = finalPosition;
         }
     }
 }
